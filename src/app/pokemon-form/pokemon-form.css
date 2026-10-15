@@ -168,6 +168,22 @@ button[type="submit"]:disabled {
   outline-offset: 2px;
 }
 
+.btn-cancel {
+  padding: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #555555;
+  border: 3px solid #111111;
+  border-radius: 6px;
+  cursor: pointer;
+  text-shadow: 1px 1px 0 #111111;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+
 section { 
   margin-top: 25px; 
   background-color: #2b2d42; 

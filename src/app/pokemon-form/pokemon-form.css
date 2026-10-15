@@ -115,6 +115,59 @@ button[type="submit"]:disabled {
   opacity: 0.7; 
 } 
 
+.item-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.btn-edit,
+.btn-delete {
+  flex: 1;
+  padding: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #ffffff;
+  border: 3px solid #111111;
+  border-radius: 6px;
+  cursor: pointer;
+  text-shadow: 1px 1px 0 #111111;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.btn-edit {
+  background-color: #2e8b57;
+  box-shadow: 0 3px 0 #1b5233;
+}
+
+.btn-delete {
+  background-color: #cc1a1a;
+  box-shadow: 0 3px 0 #6e0d0d;
+}
+
+.btn-edit:hover {
+  background-color: #3aa76a;
+}
+
+.btn-delete:hover {
+  background-color: #e32424;
+}
+
+.btn-edit:active,
+.btn-delete:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #111111;
+}
+
+.btn-edit:focus-visible,
+.btn-delete:focus-visible {
+  outline: 3px solid #f77f00;
+  outline-offset: 2px;
+}
+
 section { 
   margin-top: 25px; 
   background-color: #2b2d42; 

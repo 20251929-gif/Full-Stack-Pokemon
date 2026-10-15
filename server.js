@@ -31,4 +31,21 @@ app.get('/api/pokemon', async (req,res) => {
     res.send(list);
 })
 
+//Delete request
+app.delete('/api/pokemon/:id', async (req, res) => {
+    try {
+        const deleted = await Pokemon.findByIdAndDelete(req.params.id);
+        if (!deleted) return res.status(404).send({ message: 'Pokemon not found' });
+        res.status(204).send();
+    } catch (err) {
+        res.status(400).send({ message: err.message });
+    }
+});
+
+//Update request 
+app.put('/api/pokemon/:id', async(req, res) => {
+  const updatePokemon = await Pokemon.findByIdAndUpdate(req.params.id, req.body, {new: true});
+  res.send(updatePokemon);
+})
+
 //API is running on port 5000 -> http://localhost:5000

@@ -1,5 +1,5 @@
 <form [formGroup]="pokemonForm" (ngSubmit)="onSubmit()" novalidate>
-  <h2>Add a Pokémon</h2>
+  <h2>{{ editingID() ? 'Update a Pokémon' : 'Add a Pokémon' }}</h2>
 
   <div>
     <label for="name">Name</label>
@@ -33,20 +33,35 @@
     }
   </div>
 
-  <button type="submit" [disabled]="pokemonForm.invalid">Save Pokémon</button>
-</form>
+  <button type="submit" [disabled]="pokemonForm.invalid">
+    {{ editingID() ? 'Update Pokémon' : 'Save Pokémon' }}
+  </button>
 
-<section aria-labelledby="pokemon-list-heading">
+  @if (editingID()) {
+    <button type="button" (click)="cancelEdit()">Cancel</button>
+  }
+  </form>
+
+  <section aria-labelledby="pokemon-list-heading">
   <h2 id="pokemon-list-heading">Saved Pokémon</h2>
 
   <ul>
     @for (pokemon of pokemonService.pokemonList(); track pokemon.id) {
-      <li>
-        <strong>{{ pokemon.name }}</strong>
-        — Type: {{ pokemon.type }}, Level: {{ pokemon.level }}, Nature: {{ pokemon.nature }}
-      </li>
+  <li>
+    <strong>{{ pokemon.name }}</strong>
+    — Type: {{ pokemon.type }}, Level: {{ pokemon.level }}, Nature: {{ pokemon.nature }}
+
+    <div class="item-actions">
+      <button type="button" class="btn-edit" (click)="startEdit(pokemon)" [attr.aria-label]="'Edit ' + pokemon.name">
+        Edit
+      </button>
+    <button type="button" class="btn-delete" (click)="deletePokemon(pokemon._id)" [attr.aria-label]="'Delete ' + pokemon.name">
+      Delete
+    </button>
+    </div>
+  </li>
     } @empty {
       <li>No Pokémon saved yet.</li>
     }
   </ul>
-</section>
+</section>    

@@ -51,21 +51,18 @@ onSubmit() {
     }
   }
 
-  onDelete(id: string) {
-    if(confirm('Are you sure you want to release this Pokemon into the wild?')) {
+  deletePokemon(id: string) {
+    if (confirm('Are you sure you want to release this Pokemon into the wild?')) {
       this.pokemonService.deletePokemon(id);
     }
-    this.pokemonService.fetchPokemon();
   }
 
   startEdit(pokemon: any) {
     this.editingID.set(pokemon._id);
     this.pokemonForm.patchValue(pokemon);
   }
-    cancelEdit(){
+  cancelEdit(){
     this.editingID.set(null);
     this.pokemonForm.reset();
   }
-
-
 }
